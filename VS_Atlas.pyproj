@@ -1,0 +1,112 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>d5bced28-a2a9-4093-a7e4-361a3e43bcc3</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>launcher.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <Name>VS_Atlas</Name>
+    <RootNamespace>VS_Atlas</RootNamespace>
+    <InterpreterId>Global|VisualStudio|Atlas .venv</InterpreterId>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterPath>C:\Users\Admin\VSC Python Desktop KI\.venv\Scripts\python.exe</InterpreterPath>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <InterpreterArguments>-m atlas.atlas_gui.main</InterpreterArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="atlas\atlas_gui\main.py" />
+    <Compile Include="atlas\atlas_gui\services\atlas_service.py" />
+    <Compile Include="atlas\atlas_gui\services\auth_service.py" />
+    <Compile Include="atlas\atlas_gui\services\settings_service.py" />
+    <Compile Include="atlas\atlas_gui\services\__init__.py" />
+    <Compile Include="atlas\atlas_gui\views\help_dialog.py" />
+    <Compile Include="atlas\atlas_gui\views\login_view.py" />
+    <Compile Include="atlas\atlas_gui\views\main_view.py" />
+    <Compile Include="atlas\atlas_gui\views\register_dialog.py" />
+    <Compile Include="atlas\atlas_gui\views\reset_password_dialog.py" />
+    <Compile Include="atlas\atlas_gui\views\system_info_dialog.py" />
+    <Compile Include="atlas\atlas_gui\views\__init__.py" />
+    <Compile Include="atlas\atlas_gui\__init__.py" />
+    <Compile Include="atlas\core\intent.py" />
+    <Compile Include="atlas\core\__init__.py" />
+    <Compile Include="atlas\lists.py" />
+    <Compile Include="atlas\utils.py" />
+    <Compile Include="atlas\extern_tasks.py" />
+    <Compile Include="atlas\intern_tasks.py" />
+    <Compile Include="atlas\help_cmd.py" />
+    <Compile Include="atlas\main.py" />
+    <Compile Include="atlas\__init__.py" />
+    <Compile Include="atlas\VS_Atlas.py" />
+    <Compile Include="launcher.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="atlas\" />
+    <Folder Include="atlas\.vs\" />
+    <Folder Include="atlas\.vs\atlas\" />
+    <Folder Include="atlas\.vs\atlas\FileContentIndex\" />
+    <Folder Include="atlas\.vs\atlas\v17\" />
+    <Folder Include="assets\" />
+    <Folder Include="assets\icons\" />
+    <Folder Include="atlas\atlas_gui\" />
+    <Folder Include="atlas\atlas_gui\services\" />
+    <Folder Include="atlas\atlas_gui\views\" />
+    <Folder Include="atlas\core\" />
+    <Folder Include="atlas\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore.txt" />
+    <Content Include="atlas\.vs\atlas\FileContentIndex\43a9b17b-ced0-47d7-a4e6-29c026a27db4.vsidx" />
+    <Content Include="atlas\.vs\atlas\FileContentIndex\d82d0540-386a-4bc8-83c8-eedb2c3da7e3.vsidx" />
+    <Content Include="atlas\.vs\atlas\v17\.suo" />
+    <Content Include="atlas\.vs\atlas\v17\DocumentLayout.backup.json" />
+    <Content Include="atlas\.vs\atlas\v17\DocumentLayout.json" />
+    <Content Include="assets\icons\Atlas-Icon.png" />
+    <Content Include="assets\icons\Atlas-Logo.png" />
+    <Content Include="assets\icons\atlas_icon.ico" />
+    <Content Include="assets\icons\atlas_icon_128.png" />
+    <Content Include="assets\icons\atlas_icon_16.png" />
+    <Content Include="assets\icons\atlas_icon_24.png" />
+    <Content Include="assets\icons\atlas_icon_256.png" />
+    <Content Include="assets\icons\atlas_icon_32.png" />
+    <Content Include="assets\icons\atlas_icon_48.png" />
+    <Content Include="assets\icons\atlas_icon_512.png" />
+    <Content Include="assets\icons\atlas_icon_64.png" />
+    <Content Include="assets\icons\atlas_splash_1024.png" />
+    <Content Include="build.ps1" />
+    <Content Include="atlas\__pycache__\a_config.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\a_lists.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\b_utils.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\c_extern_tasks.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\c_web_actions.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\d_intern_tasks.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\d_system_info.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\e_help_cmd.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\main.cpython-313.pyc" />
+    <Content Include="atlas\__pycache__\__init__.cpython-313.pyc" />
+    <Content Include="installer.iss" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|VisualStudio|Atlas .venv" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+  <!-- Uncomment the CoreCompile target to enable the Build command in
+       Visual Studio and specify your pre- and post-build commands in
+       the BeforeBuild and AfterBuild targets below. -->
+  <!--<Target Name="CoreCompile" />-->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+</Project>

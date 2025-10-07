@@ -1,0 +1,26 @@
+# Virtualenv & Build
+Atlas-venv/
+build/
+dist/
+Output/
+*.spec
+
+# Speech-Modelle & Binärblobs
+models/
+*.exe
+*.msi
+*.zip
+*.7z
+
+# Python Cache/Temp
+__pycache__/
+*.pyc
+*.pyo
+*.log
+*.tmp
+
+# IDE/System
+.vs/
+.vscode/
+.DS_Store
+Thumbs.db
