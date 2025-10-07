@@ -1,0 +1,21 @@
+# Automatische Zeilenende-Anpassung
+* text=auto
+
+# Windows-Skripte (CRLF)
+*.ps1  text eol=crlf
+*.iss  text eol=crlf
+*.bat  text eol=crlf
+
+# Python/Unix-Dateien (LF)
+*.py   text eol=lf
+*.sh   text eol=lf
+*.md   text eol=lf
+*.txt  text eol=lf
+
+# Binärdateien – keine Konvertierung
+*.ico  binary
+*.png  binary
+*.jpg  binary
+*.exe  binary
+*.dll  binary
+*.pak  binary
