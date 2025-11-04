@@ -11,7 +11,20 @@ from atlas.atlas_gui.services.settings_service import load_settings, save_settin
 from PySide6.QtGui import QIcon
 from pathlib import Path
 
-#Start
+def _app_icon() -> QIcon:
+    here = Path(__file__).resolve()
+
+    root_ico = here.parent.parent.parent / "assets" / "icons" / "atlas_icon.ico"
+    if root_ico.exists():
+        return QIcon(str(root_ico))
+
+    meipass = Path(getattr(sys, "_MEIPASS", ""))
+    pkg_ico = meipass / "assets" / "icons" / "atlas_icon.ico"
+    if pkg_ico.exists():
+        return QIcon(str(pkg_ico))
+
+    alt_ico = meipass / "atlas" / "assets" / "icons" / "atlas_icon.ico"
+    return QIcon(str(alt_ico)) if alt_ico.exists() else QIcon()
 
 class AtlasWindow(QMainWindow):
     
@@ -20,8 +33,7 @@ class AtlasWindow(QMainWindow):
         self.setWindowTitle("Atlas")
         self.resize(640,400)
 
-        icon_path = Path("assets/icons/atlas_icon.ico")
-        self.setWindowIcon(QIcon(str(icon_path)))
+        self.setWindowIcon(_app_icon())
 
         self.status = QStatusBar()
         self.setStatusBar(self.status)
@@ -68,6 +80,8 @@ class AtlasWindow(QMainWindow):
 
 def main() -> int:
     app = QApplication(sys.argv)
+    icon = _app_icon()
+    app.setWindowIcon(icon)
     window = AtlasWindow()
     window.show()
     return app.exec()
