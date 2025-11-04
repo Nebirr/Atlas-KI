@@ -33,22 +33,19 @@ Now with **Live speech recognition** and **Push-to-Talk** (configurable hotkey) 
 
 ## 🧱 Project Structure
 VS_Atlas/
-├─ atlas/ # App code (GUI, logic, speech, services)
-│ ├─ atlas_gui/
-│ ├─ speech/
-│ └─ stt/
-├─ assets/ # icons, etc.
-├─ models/
-│ └─ vosk/
-│ └─ vosk-model-small-en-us-0.15/ # bundled speech model (via installer)
-├─ dist/ # PyInstaller output (ignored in git)
-├─ build/ # PyInstaller build cache (ignored)
-├─ installer.iss # Inno Setup script (plug & play)
-├─ requirements.txt
-└─ README.md
-
-yaml
-Code kopieren
+-atlas/ # App code (GUI, logic, speech, services)
+│  atlas_gui/
+│  speech/
+│  stt/
+- assets/ # icons, etc.
+- models/
+│  vosk/
+│  vosk-model-small-en-us-0.15/ # bundled speech model (via installer)
+- dist/ # PyInstaller output (ignored in git)
+- build/ # PyInstaller build cache (ignored)
+- installer.iss # Inno Setup script (plug & play)
+- requirements.txt
+- README.md
 
 ---
 
