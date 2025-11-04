@@ -106,6 +106,10 @@ $piArgs = @(
   "--collect-submodules", "tabulate",
   "--collect-submodules", "GPUtil",
   "--collect-submodules", "psutil",
+  # --- Speech / Audio dependencies ---
+  "--collect-binaries", "sounddevice",
+  "--collect-submodules", "vosk",
+  "--collect-submodules", "numpy",
   # Einstiegspunkt
   "launcher.py"
 )

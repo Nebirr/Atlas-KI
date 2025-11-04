@@ -3,6 +3,7 @@ from atlas.core.intent import parse_intent, Intent
 from atlas.help_cmd import show_help
 from atlas.intern_tasks import show_system_info, handle_time_or_date, start_programm
 from atlas.extern_tasks import handle_search, open_website
+from atlas.atlas_gui.speech_widget import SpeechWidget
 
 while True:
     task = input("Frag mich etwas ...: ")

@@ -3,6 +3,8 @@ from PySide6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QHBoxLa
 from atlas.help_cmd import matches_help
 from atlas.atlas_gui.views.help_dialog import HelpDialog
 from atlas.atlas_gui.views.system_info_dialog import SystemInfoDialog
+from atlas.atlas_gui.speech_widget import SpeechWidget
+from atlas.atlas_gui.services.settings_service import load_settings
 
 class MainView(QWidget):
 
@@ -14,6 +16,8 @@ class MainView(QWidget):
 
         self.title = QLabel("Atlas")
         self.title.setStyleSheet("font-size: 22px; font-weight: 600;")
+
+        self._speech = None
 
         self.log = QPlainTextEdit()
         self.log.setReadOnly(True)
@@ -43,15 +47,16 @@ class MainView(QWidget):
         btn_logout.clicked.connect(self.logout_requested.emit)
         row.addWidget(btn_logout)
 
-
+        
         layout.addWidget(self.title)
+       
         layout.addWidget(self.log)
-        layout.addLayout(row_input)   
+        layout.addLayout(row_input)
         layout.addStretch(1)
         layout.addLayout(row)
 
         self._atlas = None
-    
+
     def open_system_info_dialog(self):
         if not hasattr(self, "_sysinfo_dlg") or self._sysinfo_dlg is None:
             self._sysinfo_dlg = SystemInfoDialog(self)
@@ -66,23 +71,25 @@ class MainView(QWidget):
 
     def _append(self, text: str, role: str = "sys") -> None:
         if role == "user":
-           prefix = "🧑 [USER] "
+            prefix = "🧑 [USER] "
         else:
-           prefix = "🤖 [ATLAS] "
-        
+            prefix = "🤖 [ATLAS] "
         if text:
             self.log.appendPlainText(f"{prefix}{text}")
             self.log.verticalScrollBar().setValue(self.log.verticalScrollBar().maximum())
 
     def set_username(self, name: str) -> None:
         self.title.setText(f"Atlas - Menu (User: {name})")
-    
+        
+        if self._speech is None:
+            self._speech = SpeechWidget(username=name, on_final_text=self._on_speech_final)
+            
+            self.layout().insertWidget(1, self._speech)
+
     def set_atlas_service(self, atlas_service) -> None:
         self._atlas = atlas_service
 
-    def _on_send(self) -> None:
-        cmd = self.input.text().strip()
-        self.input.clear()
+    def _handle_command(self, cmd: str) -> None:
         if not cmd:
             return
         self._append(cmd, role="user")
@@ -98,3 +105,11 @@ class MainView(QWidget):
         out = self._atlas.process_command(cmd)
         if out:
             self._append(out, role="sys")
+
+    def _on_send(self) -> None:
+        cmd = self.input.text().strip()
+        self.input.clear()
+        self._handle_command(cmd)
+
+    def _on_speech_final(self, text: str) -> None:
+        self._handle_command(text)

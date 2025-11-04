@@ -31,6 +31,7 @@
     <Compile Include="atlas\atlas_gui\services\auth_service.py" />
     <Compile Include="atlas\atlas_gui\services\settings_service.py" />
     <Compile Include="atlas\atlas_gui\services\__init__.py" />
+    <Compile Include="atlas\atlas_gui\speech_widget.py" />
     <Compile Include="atlas\atlas_gui\views\help_dialog.py" />
     <Compile Include="atlas\atlas_gui\views\login_view.py" />
     <Compile Include="atlas\atlas_gui\views\main_view.py" />
@@ -39,14 +40,22 @@
     <Compile Include="atlas\atlas_gui\views\system_info_dialog.py" />
     <Compile Include="atlas\atlas_gui\views\__init__.py" />
     <Compile Include="atlas\atlas_gui\__init__.py" />
+    <Compile Include="atlas\audio\mic_worker.py" />
+    <Compile Include="atlas\audio\__init__.py" />
     <Compile Include="atlas\core\intent.py" />
     <Compile Include="atlas\core\__init__.py" />
     <Compile Include="atlas\lists.py" />
+    <Compile Include="atlas\speech\controller.py" />
+    <Compile Include="atlas\speech\__init__.py" />
+    <Compile Include="atlas\stt\vosk_engine.py" />
+    <Compile Include="atlas\stt\__init__.py" />
     <Compile Include="atlas\utils.py" />
     <Compile Include="atlas\extern_tasks.py" />
     <Compile Include="atlas\intern_tasks.py" />
     <Compile Include="atlas\help_cmd.py" />
     <Compile Include="atlas\main.py" />
+    <Compile Include="atlas\vad\vad.py" />
+    <Compile Include="atlas\vad\__init__.py" />
     <Compile Include="atlas\__init__.py" />
     <Compile Include="atlas\VS_Atlas.py" />
     <Compile Include="launcher.py" />
@@ -63,6 +72,10 @@
     <Folder Include="atlas\atlas_gui\services\" />
     <Folder Include="atlas\atlas_gui\views\" />
     <Folder Include="atlas\core\" />
+    <Folder Include="atlas\audio\" />
+    <Folder Include="atlas\stt\" />
+    <Folder Include="atlas\speech\" />
+    <Folder Include="atlas\vad\" />
     <Folder Include="atlas\__pycache__\" />
   </ItemGroup>
   <ItemGroup>

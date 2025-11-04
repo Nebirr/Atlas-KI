@@ -117,6 +117,8 @@ class UserSettings:
     window_height: int = 800
     show_help_on_start: bool = False
     custom_aliases: dict | None = None
+    speech_mode: str = "ptt"
+    ptt_key: str = "Space"
 
 def settings_path(username: str) -> Path:
     u = username.strip().lower()
