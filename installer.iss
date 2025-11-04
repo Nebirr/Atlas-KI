@@ -4,9 +4,9 @@
 
 #define MyAppName        "Atlas"
 #define MyAppExeName     "Atlas.exe"
-#define MyAppPublisher   "Dein Name / Team"
-#define MyAppURL         "https://example.com"
-#define MyAppVersion     "1.0.0"
+#define MyAppPublisher   "Nebirr"
+#define MyAppURL         "https://github.com/Nebirr/Atlas-KI"
+#define MyAppVersion     "1.1.0"
 
 [Setup]
 AppId={{6A0E0A18-8B2C-4B63-9D97-1B7DB6960B86}  ; GUID (beliebig, aber stabil lassen)
