@@ -6,7 +6,7 @@
 #define MyAppExeName     "Atlas.exe"
 #define MyAppPublisher   "Nebirr"
 #define MyAppURL         "https://github.com/Nebirr/Atlas-KI"
-#define MyAppVersion     "1.1.0"
+#define MyAppVersion     "1.1.3"
 
 [Setup]
 AppId={{6A0E0A18-8B2C-4B63-9D97-1B7DB6960B86}  ; GUID (beliebig, aber stabil lassen)
@@ -21,6 +21,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 DisableDirPage=no
 DisableProgramGroupPage=no
+ChangesEnvironment=yes
 AllowNoIcons=yes
 
 ; 64-bit Program Files verwenden, wenn OS 64-bit ist
@@ -56,6 +57,10 @@ Name: "autostart"; Description: "Atlas beim Anmelden automatisch starten"; Group
 ; *** GANZE onedir-Struktur aus dist\Atlas kopieren ***
 ; WICHTIG: Pfad anpassen, falls du das Script NICHT im Projekt-Root speicherst.
 Source: "dist\Atlas\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+; Vosk EN model mit installieren
+Source: "models\vosk\vosk-model-small-en-us-0.15\*"; \
+  DestDir: "{app}\models\vosk\vosk-model-small-en-us-0.15"; \
+  Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 ; Startmenü
@@ -67,6 +72,10 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 ; Autostart (pro Maschine) – setzt/entfernt Run-Schlüssel
 ; (Nutzt Tasks: autostart)
 Root: HKLM; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "{#MyAppName}"; ValueData: """{app}\{#MyAppExeName}"""; Flags: uninsdeletevalue; Tasks: autostart
+; Modellpfad als Env-Var (pro Maschine)
+Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; \
+  ValueType: expandsz; ValueName: "ATLAS_VOSK_MODEL_DIR"; \
+  ValueData: "{app}\models\vosk\vosk-model-small-en-us-0.15"; Flags: preservestringtype
 
 [Run]
 ; Nach der Installation mit Checkbox starten

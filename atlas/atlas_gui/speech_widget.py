@@ -9,15 +9,23 @@ from atlas.atlas_gui.services.settings_service import load_settings, save_settin
 
 def _en_model_dir() -> str:
     env = os.environ.get("ATLAS_VOSK_MODEL_DIR")
-    if env:
+    if env and os.path.isdir(env):
         return env
-    system = platform.system()
-    if system == "Windows":
-        base = os.environ.get("APPDATA") or str(Path.home() / "AppData" / "Roaming")
-    elif system == "Darwin":
-        base = str(Path.home() / "Library" / "Application Support")
-    else:
-        base = os.environ.get("XDG_DATA_HOME", str(Path.home() / ".local" / "share"))
+
+    try:
+        import sys
+        from pathlib import Path
+        if getattr(sys, "frozen", False):
+            app_dir = Path(sys.executable).resolve().parent 
+        else:
+            app_dir = Path(__file__).resolve().parents[2]
+        cand = app_dir / "models" / "vosk" / "vosk-model-small-en-us-0.15"
+        if cand.is_dir():
+            return str(cand)
+    except Exception:
+        pass
+
+    base = os.environ.get("APPDATA") or str(Path.home() / "AppData" / "Roaming")
     return os.path.join(base, "Atlas", "models", "vosk", "vosk-model-small-en-us-0.15")
 
 def _seq_text_portable(seq: QKeySequence) -> str:
