@@ -76,7 +76,6 @@ def _seq_to_parts(seq: QKeySequence) -> tuple[QtCore.Qt.KeyboardModifiers, QtCor
     return mods, QtCore.Qt.Key_Space
 
 def _mods_to_keys(mods: QtCore.Qt.KeyboardModifiers) -> set[int]:
-    """Für keyRelease: welche Mod-Tasten gehören zur Kombi?"""
     keys = set()
     if mods & QtCore.Qt.ShiftModifier:   keys.add(int(QtCore.Qt.Key_Shift))
     if mods & QtCore.Qt.ControlModifier: keys.add(int(QtCore.Qt.Key_Control))
