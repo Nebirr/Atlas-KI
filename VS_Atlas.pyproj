@@ -109,6 +109,7 @@
     <Content Include="atlas\__pycache__\main.cpython-313.pyc" />
     <Content Include="atlas\__pycache__\__init__.cpython-313.pyc" />
     <Content Include="installer.iss" />
+    <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|VisualStudio|Atlas .venv" />
