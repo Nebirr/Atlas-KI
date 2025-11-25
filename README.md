@@ -55,3 +55,7 @@ VS_Atlas/
 - (For building from source) Python **3.11+**, Inno Setup 6+ (for installer)
 
 ---
+## License
+
+This project is licensed under the MIT License.  
+See the [LICENSE](LICENSE.txt) file for details.
